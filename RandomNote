@@ -386,23 +386,6 @@ left = i-currentRoundMax/2+1;
 
 =========================================================================================================
 
-第2章
-
-为该讲的内容总结了几个问题, 大家复习的时候可以先尝试回答这些问题检查自己的掌握程度:
-   1. redo log的概念是什么? 为什么会存在.
-   2. 什么是WAL(write-ahead log)机制, 好处是什么.
-   3. redo log 为什么可以保证crash safe机制.
-   4. binlog的概念是什么, 起到什么作用, 可以做crash safe吗? 
-   5. binlog和redolog的不同点有哪些? 
-   6. 物理一致性和逻辑一直性各应该怎么理解? 
-   7. 执行器和innoDB在执行update语句时候的流程是什么样的?
-   8. 如果数据库误操作, 如何执行数据恢复?
-   9. 什么是两阶段提交, 为什么需要两阶段提交, 两阶段提交怎么保证数据库中两份日志间的逻辑一致性(什么叫逻辑一致性)?
-  10. 如果不是两阶段提交, 先写redo log和先写bin log两种情况各会遇到什么问题?
-
-
-=========================================================================================================
-
 刷题
 https://zxi.mytechroad.com/blog/leetcode-problem-categories/
 https://github.com/wisdompeak/LeetCode
@@ -467,8 +450,216 @@ LC 912 排序
 扩展 算法学习笔记(2) : 树状数组
 https://zhuanlan.zhihu.com/p/93795692
 
+
+LC 04
+
+三叶的解法，比较简洁，分治+递归
+https://leetcode.cn/problems/median-of-two-sorted-arrays/solution/shua-chuan-lc-po-su-jie-fa-fen-zhi-jie-f-wtu2/
+
+
+LC 169 分治或者vote算法
+
+模板写法
+    public int majorityElement(int[] nums) {
+        return devide(nums, 0, nums.length - 1);
+    }
+
+    private int devide(int[] nums, int left, int right) {
+        // last element
+        if (left == right) {
+            return nums[left];
+        }
+        // 开始切分, 如果2边结果一样，可以返回任何一个结果
+        int mid = left + (right - left) / 2;
+        int leftRes = devide(nums, left, mid);
+        int rightRes = devide(nums, mid+1, right);
+        if (leftRes == rightRes) {
+            return leftRes;
+        }
+        // 如果结果不一样，则需要进行conquer，即计数统计出出现最大那个
+        int leftCount = conquer(nums, left, mid, leftRes);
+        int rightCount = conquer(nums, mid+1, right, rightRes);
+        if (leftCount > rightCount) {
+            return leftRes;
+        } else {
+            return rightRes;
+        }
+    }
+
+    private int conquer(int[] nums, int left, int right, int res) {
+        int count = 0;
+        for (int i=left; i<=right; i++) {
+            if (nums[i] == res) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+
+LC 229 众数的姊妹题
+
+推广到n/k的场景
+https://leetcode.cn/problems/majority-element-ii/solution/gong-shui-san-xie-noxiang-xin-ke-xue-xi-ws0rj/
+
+
+LC 23 mergeSortedLists
+
+1. 分治+优先队列 2种写法
+2. Comparator写法比较难记录，ele1 ele2 如果ele1要排在ele2前面，需要-1，e.g. 4->5 需要return ele1.val - ele2.val
+
+
+LC 50 快速幂
+
+done 后续可以尝试递归+迭代2种写法
+
+
+LC 215 quick select 第k大的数
+
+3种写法进行quick select
+https://leetcode.cn/problems/kth-largest-element-in-an-array/solutions/1282560/cpython3java-1da-gen-dui-diao-ku-2shou-l-xveq/
+
+
+pivot := A[lo]
+    i := lo - 1
+    j := hi + 1
+    loop forever
+        do
+            i := i + 1
+        while A[i] < pivot
+
+        do
+            j := j - 1
+        while A[j] > pivot
+
+        if i >= j then
+            return j
+
+        swap A[i] with A[j]
+
+partition的算法
+https://www.freecodecamp.org/news/quickselect-algorithm-explained-with-examples/        
+
+
+
+LC 315 计算右侧小于当前元素的个数
+
+
+结合剑指offer 51题逆序对一起看
+
+merge sort的算法
+https://www.geeksforgeeks.org/merge-sort/
+
+inversion pair count
+https://www.geeksforgeeks.org/inversion-count-in-array-using-merge-sort/
+
+
+MergeSort(arr[], l,  r)
+
+If r > l
+
+- Find the middle point to divide the array into two halves: 
+  middle m = l + (r – l)/2
+- Call mergeSort for first half:   
+  Call mergeSort(arr, l, m)
+- Call mergeSort for second half:
+  Call mergeSort(arr, m + 1, r)
+- Merge the two halves sorted in steps 2 and 3:
+  Call merge(arr, l, m, r)
+
+
+
+Cloest pair of points
+
+https://www.geeksforgeeks.org/closest-pair-of-points-using-divide-and-conquer-algorithm/
+
+
+
+LC 327 区间和的个数
+
+
+[-2 5 1]
+
+step 1
+
+sortLeft left=0 right=1
+sortRight left=2 right=2
+mergeTogether left=0 mid=1 right=2
+
+step 2
+
+sortLeft left=0 right=0
+sortRight left=1 right=1
+mergeTogether left=0 mid=0 right=1
+
+step 3
+
+sortLeft left=2 right=2
+sortRight left=3 right=2
+mergeTogether left=2 mid=2 right=2
+
+
+
+
+LC 912 排序
+
+复习排序算法
+https://leetcode.cn/problems/sort-an-array/solutions/179489/fu-xi-ji-chu-pai-xu-suan-fa-java-by-liweiwei1419/
+
+LC 493
+
+LC 654
+
 =========================================================================================================
 
-单调栈 & 单调队列
+单调栈
 
+5 6 4 7 5 2
+
+以下模拟左边求第一个比当前小的数
+
+-> 
+
+5 6 
+6 -> 4
+5 -> 4
+4 7
+7 -> 5
+4 5
+5 -> 2
+4 -> 2
+2
+
+以下模拟右边求第一个比当前小的数
+
+2 5 7 
+7 -> 4
+5 -> 4
+2 4 6
+6 -> 5
+2 4 5
+
+1. 存游标会方便处理很多
+
+LC 316 去除重复字母
+
+有点坑，写的一塌糊涂，完全没有正确的思路
+
+weiwei哥的题单
+https://leetcode.cn/problems/remove-duplicate-letters/solutions/55044/zhan-by-liweiwei1419/
+
+LC 402
+
+LC 42 接雨水
+ 
+1.可以加一个哨兵值比如-1进去，也可以通过while循环里面判断栈为空则break的方式
+2.实际栈中不是完全单调，需要考虑一样高度的柱子
+3.还有面积叠加法(类似阳光照射)和动态规划(进一步可以优化成双指针)，复习的时候可以再做一下
+
+LC 84 最大长方形面积
+
+1.弹出的时候要特别小心，需要用当前弹出元素前面的index+1，因为我们能够弹出的元素都是之前递增的元素，所以一定是要把前面位置已经弹出的index记录的
+2.左右2边分别用2个stack统计的做法，更容易理解，但和点1一样最终还是靠统计index位置，即使用peek
+
+==============================================================================================================================
 
