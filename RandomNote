@@ -762,5 +762,69 @@ LC 1696 跳跃游戏五
 ==============================================================================================================================
 
 滑动窗口
+ 
+通用模板
+本质还是双指针，左指针left和右指针iterator i
+1.进
+  当前遍历的元素进入窗口，对应右指针i的移动
+2.出
+  判断是否符合条件缩小窗口，对应左指针left满足条件后向右的移动
+  e.g. 
+  while (condition satisfied) {
+      update conditon
+      left++;
+  }
+3.算
+  一般是在2.的出完成，窗口有效后，更新，常用 i - left + 1 表达窗口的宽度
 
 
+LC 3 无重复字符的最长子串
+
+模板题，没有太多好说的
+
+LC 159 最多有2个不同字符的最长子串
+
+付费题
+
+class Solution {
+    public int lengthOfLongestSubstringWithAtMost2DistinctLetters(String s) {
+        if (s == null || s.length == 0) {
+            return 0;
+        }
+
+        // 滑动窗口
+        int left = 0;
+        int res = 0;
+        Map<Character, Integer> charMemo = new HashMap<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            // current char
+            char curChar = s.charAt(i);
+            charMemo.put(curChar, charMemo.getOrDefault(curChar, 0) + 1);
+
+            while (charMemo.size() > 2) {
+                char leftChar = s.charAt(left);
+                charMemo.put(leftChar, charMemo.get(leftChar) - 1);
+                if (charMemo.get(leftChar) == 0) {
+                    charMemo.remove(leftChar);
+                }
+                left++;
+            }
+            res = Math.max(res, i - left + 1);
+        }
+
+        return res;
+    }
+}
+
+LC 340 最多k个不同字符的最长子串
+
+付费题 完全就是LC159的套娃
+
+LC 76 最小覆盖子串
+
+1.题目看清楚，最大最小，返回类型是子串
+2.Integer之类的对象类型的一定要注意是用equals去比较，不是==
+3.以下做法还能优化，只需要一个map就能记录 
+  通过map记录每个letter在字符串t中出现的次数
+  通过一个validCount记录多少个字符已经符合要求，一旦符合要求即可以缩小窗口，缩小窗口后判断left指向的字符从tmpMap里面更新，如果减到0则validCount--
