@@ -828,3 +828,12 @@ LC 76 最小覆盖子串
 3.以下做法还能优化，只需要一个map就能记录 
   通过map记录每个letter在字符串t中出现的次数
   通过一个validCount记录多少个字符已经符合要求，一旦符合要求即可以缩小窗口，缩小窗口后判断left指向的字符从tmpMap里面更新，如果减到0则validCount--
+  
+LC 567 字符串的排列
+
+1.滑动窗口应用，用固定单词窗口移动的方式进行计算会更好
+  for (i = wordLen; i < s.length(); i++) {
+      count[s.charAt(i) - 'a']++;
+      count[s.charAt(i - wordLen) - 'a']--;
+      if(checkValid) return true;
+  }
