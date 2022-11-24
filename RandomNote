@@ -853,3 +853,11 @@ LC 567 字符串的排列
       count[s.charAt(i - wordLen) - 'a']--;
       if(checkValid) return true;
   }
+  
+LC 992 k个不同整数的子数组
+
+1.从左往右开始循环i 也可以理解成每次固定i然后计算左边left到i之间的区间是否有大于k个不同元素
+
+LC 1248
+
+1.和992基本完全一致
