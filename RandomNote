@@ -861,3 +861,144 @@ LC 992 k个不同整数的子数组
 LC 1248
 
 1.和992基本完全一致
+
+==============================================================================================================================
+
+排序十讲
+
+常考的
+
+quickSort (quickSelect)
+
+mergeSort
+
+
+bucketSort
+countingSort
+heapSort
+
+
+考的少的
+
+bubbleSort
+
+
+selectionSort
+
+https://www.geeksforgeeks.org/selection-sort/
+
+void sort(int arr[])
+    {
+        int n = arr.length;
+ 
+        // One by one move boundary of unsorted subarray
+        for (int i = 0; i < n-1; i++)
+        {
+            // Find the minimum element in unsorted array
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (arr[j] < arr[min_idx])
+                    min_idx = j;
+ 
+            // Swap the found minimum element with the first
+            // element
+            int temp = arr[min_idx];
+            arr[min_idx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+insertion sort
+
+把每个元素放到他们该在的位置
+
+
+shell sort
+
+1.insertion sort是插入排序的基础
+2.有不同的实现方式
+
+
+
+LC 215 kth largest element in an array
+
+
+partition的套路写法一
+
+流程要点
+1.random位置
+2.将位置换到右边尾部，然后iterate i每个元素和end比较，只有小于才移动慢指针
+3.最后要记得把end位置和满指针位置交互，满指针最后对应的位置就是1.random出来的元素应该在的位置
+
+几个细节点
+1.partition里面如果把random出来的位置调整到left就是头上，要注意返回的wall位置需要-1
+  所以默认写法基本都是放到right，这样返回的wall位置不用记-1
+2.random出来的元素不管放到头上还是尾上都只需要for循环剩下来的位置就可以了
+3.有写一个helper递归调用的写法，也有while true的写法，建议都掌握
+
+private int partition(int[] nums, int start, int end) {
+        // 随机取pivot
+        int pivot = new Random().nextInt(end - start + 1) + start;
+        swap(nums, start, pivot);
+    
+        int slowIndex = start + 1;
+        for (int i=start + 1; i<=end; i++) {
+            if (nums[i] < nums[start]) {
+                swap(nums, slowIndex, i);
+                slowIndex++;
+            }
+        }
+
+        swap(nums, start, slowIndex - 1);
+
+        return slowIndex - 1;
+    }
+
+public int findKthLargest(int[] nums, int k) {
+        int targetIndex = nums.length - k;
+        int left = 0, right = nums.length - 1;
+        while (true) {
+            int index = partition(nums, left, right);
+            if (index < targetIndex) {
+                left = index + 1;
+            } else if (index > targetIndex) {
+                right = index - 1;
+            } else {
+                return nums[targetIndex]; 
+            }
+        }
+    }
+
+
+partition的套路写法二
+
+流程要点
+1.while循环里面left++ right-- 实际上本质和for循环没有区别
+2.类似的也是需要将random出来的位置调整到start或者end的位置
+3.口诀
+  如果是pivot调整到end位置，则逻辑遍历从start到end-1，最后返回start
+  如果是pivot调整到start位置，则逻辑遍历从start+1到end，最后返回end
+  即都是返回的那个离pivot较远的位置，如果pivot在end，则返回start；pivot在start，则返回end
+
+private int partition(int[] nums, int left, int right) {
+        // while循环2边搜索的写法
+        int pivot = new Random().nextInt(right - left + 1) + left;
+        swap(nums, pivot, right);
+        int start = left, end = right - 1;
+        
+        while (start <= end) {
+            if (nums[start] <= nums[right]) {
+                start++;
+            } else if (nums[end] >= nums[right]) {
+                end--;
+            } else {
+                swap(nums, start, end);
+                start++;
+                end--;
+            }
+        }
+        
+        swap(nums, start, right);
+        return start;
+    }
+
