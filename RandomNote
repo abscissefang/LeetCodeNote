@@ -1002,3 +1002,36 @@ private int partition(int[] nums, int left, int right) {
         return start;
     }
 
+排序十讲
+
+mergeSort
+
+1.注意devide返回值获取的写法，可能会更直接容易理解一些
+
+LC 148 排序链表
+
+1.其实的fast指针要往前走一步，否则会无限循环；还有一个写法是while循环里面fast和fast.fast都判断是不是null
+   while (fast.next != null && fast.next.next != null) {
+   }
+
+Inversion Pairs
+
+1.特别小心在做merge的时候，判断条件里面是用tmp还是当前的nums，如果先copy到了tmp，就要用tmp
+
+LC 75 Sort Colors
+
+1.2堵墙，即2个指针的解法，不太好想到；有一个高阶技巧是iterate i里面改变i的值
+  每次判断0是否在lowerWall的后面，2是否在higherWall的前面
+
+bucket sort 桶排序 有用，会考到
+
+LC 451
+
+radix sort
+
+LC 174
+
+pancake sort 煎饼排序
+
+LC 969
+
