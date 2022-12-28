@@ -1364,3 +1364,33 @@ LC 15 3sum
 
 1.老题了，复习的时候还是要特别小心去重的场景，以及在哪里写去重逻辑
 
+LC 18 四数之和
+
+1.还是按照3sum的套路，但要注意几个边界条件
+  - 多个数字和加起来超过int大小
+  - 在前面2个循环开始的地方都要进行去重，且第2个循环开始的地方也是要判断j多1的场景进行去重
+
+LC 454 四数之和 2
+
+1.从4个array里面取，把题目转换为2个2sum
+
+LintCode 89 kSum
+https://www.lintcode.com/problem/89/
+
+给定 n 个不同的正整数，整数 k(k \leq n)(k≤n)以及一个目标数字 target。　
+在这 n 个数里面找出 k 个数，使得这 k 个数的和等于目标数字，求问有多少种方案？
+
+A = [1,2,3,4]
+k = 2
+target = 5
+输出 2
+
+此类问题一般2个方向
+1.求多少种组合，这种要比较敏感能想到去走递推求解法 -> dp
+2.求每个组合的值 -> dfs backtracking
+
+LintCode 90 kSum 2
+https://www.lintcode.com/problem/90/description
+
+dfs解法
+
