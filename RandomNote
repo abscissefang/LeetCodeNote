@@ -1392,5 +1392,8 @@ target = 5
 LintCode 90 kSum 2
 https://www.lintcode.com/problem/90/description
 
-dfs解法
+https://www.lintcode.com/problem/90/record
+1.dfs解法
+2.转换为2sum的解法，也要掌握，用递归的方式调用自己
 
+以上2个什么场景使用，时间复杂度多少?
