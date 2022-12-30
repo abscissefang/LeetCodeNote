@@ -1461,3 +1461,27 @@ LC 132 分割回文串2
 几个板子要记熟练记住
 1. dp判断子串是否为回文串，并可以更新最大
 2. 中心扩散解法
+
+========================
+
+经典题系列 
+
+第九讲 我的日程
+
+LC 729 日程安排1
+
+1.使用treemap判断最近的元素寻找overlap
+2.更标准的是线段树做法
+线段树做法整理
+https://leetcode.cn/problems/my-calendar-i/solutions/1646079/by-lfool-xvpv/
+
+
+LC 731 日程安排2
+
+1.用treeMap维持有序，差分数组解法，和数飞机一样
+
+LC 732 日程安排3
+
+1.和数飞机一样的做法，但会很慢
+2.正常的做法还是线段树，需要学习
+https://leetcode.cn/problems/my-calendar-iii/solutions/1537773/xian-duan-shu-by-xiaohu9527-rfzj/
