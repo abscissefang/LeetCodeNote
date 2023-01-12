@@ -1559,3 +1559,17 @@ LC 300 最长递增子序列
 
 1.经典题，复习n^n的解法
 2.nlogn的解法需要掌握，知识点是dp+二分查找，有点像单调栈但又不是非常不好想
+
+LC 1713 
+
+1.和LCS很像，但不能用这个去做
+2.想法非常巧妙，还是找递增关系，只不过这次找的内容转换为index，变成了LC 300
+  也是属于LIS的变种
+    
+可以看下三叶的总结
+https://leetcode.cn/problems/minimum-operations-to-make-a-subsequence/solutions/896862/gong-shui-san-xie-noxiang-xin-ke-xue-xi-oj7yu/
+
+LC 1807 
+
+当天的每日一题 20230112
+1.模拟，但可以更优化，遇到左括号需要干什么，遇到有括号需要干什么；
