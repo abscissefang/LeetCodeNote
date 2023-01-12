@@ -1565,7 +1565,10 @@ LC 1713
 1.和LCS很像，但不能用这个去做
 2.想法非常巧妙，还是找递增关系，只不过这次找的内容转换为index，变成了LC 300
   也是属于LIS的变种
-    
+
+当其中一个数组元素各不相同时，最长公共子序列问题（LCS）可以转换为最长上升子序列问题（LIS）进行求解。
+同时最长上升子序列问题（LIS）存在使用「维护单调序列 + 二分」的贪心解法，复杂度为 O(nlog⁡n)
+
 可以看下三叶的总结
 https://leetcode.cn/problems/minimum-operations-to-make-a-subsequence/solutions/896862/gong-shui-san-xie-noxiang-xin-ke-xue-xi-oj7yu/
 
