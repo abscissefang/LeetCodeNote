@@ -1748,5 +1748,19 @@ LC 416
 liweiwei的思路
 https://leetcode.cn/problems/partition-equal-subset-sum/solutions/13059/0-1-bei-bao-wen-ti-xiang-jie-zhen-dui-ben-ti-de-yo/
 
-LC 474 
+LC 474 一和零
 
+1.从三叶的文章开始学，依次做了以下几种
+  - 最原始的 k i j
+  - 滚动数组优化空间
+  - 把k给优化掉，降一维，即只依赖于前面一行的2个点
+2.还可以不缓存的做法
+3.大于等于m和n的场景下不再重复计算，可以大量节约时间
+
+LC 494 目标和
+
+1.先想到了回溯的做法，可以ac
+2.dfs也可以进行记忆化搜索优化，速度能提升
+3.如何和背包问题关联？正子集，负子集，问题转换为子集求和问题
+  其实dfs+memo就可以转化成dp
+4.dp解法更快，但还可以进一步压缩状态
