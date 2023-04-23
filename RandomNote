@@ -1945,3 +1945,15 @@ https://www.jianshu.com/p/927009730809/
 https://zhuanlan.zhihu.com/p/534709478
 
 2.trie做法
+类似的还有LC 1707
+
+第2讲 Union Find 并查集
+
+模版基础
+1.DSU=disjointed set union
+2.path compression
+
+优化 improve with size weighted
+1.小的往大的合并，但是有corner case
+
+优化 improve with ranked
