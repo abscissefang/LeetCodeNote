@@ -1100,6 +1100,18 @@ LC 142 环状链表2
 
 1.递归top down和bottom up的implicit含义，top down一般是recursive写法，bottom up一般是iterative写法
 
+LC 704 
+1.复习递归的写法
+
+LC 968 监控二叉树
+
+1.转移条件很难想，可以看下下面的详细解释
+https://leetcode.cn/problems/binary-tree-cameras/solutions/423212/968-jian-kong-er-cha-shu-di-gui-shang-de-zhuang-ta/
+2.头结点为0的情况非常容易忘掉处理 即返回0之后需要将最后一个根节点+1
+3.递归的写法几个判断条件还有先后区别，也很恶心
+
+
+
 ===========================================================================
 
 扫描线
