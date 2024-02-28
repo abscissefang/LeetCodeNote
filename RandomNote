@@ -1110,7 +1110,10 @@ https://leetcode.cn/problems/binary-tree-cameras/solutions/423212/968-jian-kong-
 2.头结点为0的情况非常容易忘掉处理 即返回0之后需要将最后一个根节点+1
 3.递归的写法几个判断条件还有先后区别，也很恶心
 
+LC 22 生成括号
+1.复习写的还是可以的，但边界条件还是容易忘
 
+LC 215 
 
 ===========================================================================
 
@@ -2002,3 +2005,62 @@ LC 128 最长连续序列
 
 1.初始介绍和重要概念
 2.Heapify
+
+
+
+目前供职于大淘宝交易&履约技术支付域 带领一支4人的虚拟团队
+DELL EMC超融合解决方案部门 带领一支7人的敏捷团队从零开始AIM产品部分模块的架构研
+发工作：https://www.emc.com/en-us/solutions/big-data/analytic-insights.htm
+为客户提供更便捷的运行于EMC混合云产品之上的大数据产品使用以及数据分析平台构建功能。
+2016年，AIM产品获得7M+美金订单，客户包括并不限于英格兰银行，ING保险，万达集团。
+团队也因此获得“2016 China COE Team of the Year Award”
+
+===========================================================================
+
+grind 75
+
+1. 2sum
+2. 股票买卖时间
+
+
+===========================================================================
+
+DDD相关
+
+https://scalastic.io/en/solid-dry-kiss/#interface-segregation-principle-isp
+
+SOLID
+SRP OCP LSP ISP DIP
+DRY KISS
+
+第一讲 DP Domain Primitive
+https://zhuanlan.zhihu.com/p/340911587
+
+- 第1个原则：将隐性的概念显性化
+- 第2个原则：Make Implicit Context Explicit
+- 第3个原则: Encapsulate Multi-Object Behavior
+
+Domain Primitive 是一个在特定领域里，拥有精准定义的、可自我验证的、拥有行为的 Value Object
+- DP是一个传统意义上的Value Object，拥有Immutable的特性
+- DP是一个完整的概念整体，拥有精准定义
+- DP使用业务域中的原生语言
+- DP可以是业务域的最小组成部分、也可以构建复杂组合
+
+Domain Primitive的概念和命名来自于Dan Bergh Johnsson & Daniel Deogun的书 Secure by Design
+在 DDD 中， Value Object 这个概念其实已经存在：
+
+DP和VO的区别
+在Vernon的IDDD红皮书中，作者更多的关注了Value Object的Immutability、Equals方法、Factory方法等
+Domain Primitive 是 Value Object 的进阶版，在原始 VO 的基础上要求每个 DP 拥有概念的整体，而不仅仅是值对象。在 VO 的 Immutable 基础上增加了 Validity 和行为。当然同样的要求无副作用（side-effect free）
+
+DP和DTO的区别
+
+
+第二讲 应用架构
+
+第四讲 领域设计规范
+
+- 跨实体的行为 -> 领域
+
+
+
