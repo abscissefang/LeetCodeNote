@@ -1,0 +1,18 @@
+===========================================================================
+
+分布式缓存tair
+
+热点请求的解决利器—— Tair热点散列机制
+https://ata.atatech.org/articles/11000092246?layout=%2Fvelocity%2Flayout%2Fblank.vm
+
+
+App Server  应用运行的机器，使用Tair的客户端和Tair集群进行通信
+ConfigServer    Tair集群的管理节点，负责数据路由表和集群节点状态的维护
+DataServer  Tair集群的数据节点，负责数据存储和客户端的请求处理
+Bucket  虚拟数据节点的代称，和实际的DataServer节点有一一映射关系
+HotZone Tair集群数据节点的特殊存储区域，用于热点数据的读写
+Namespace   Tair集群隔离用户访问的机制，不同Namespace的数据逻辑上隔离
+热点指数    一个集群热点节点的QPS和同集群所有节点平均QPS的比值（详见2.2.2.4）
+
+解决方案分为三部分：热点识别、读热点方案和写热点方案
+
